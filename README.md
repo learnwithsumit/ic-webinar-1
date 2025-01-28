@@ -1,3 +1,3 @@
-## Style it with CSS
+## Simplify styling with Tailwind CSS
 
-Add colors, fonts, and designs to make it look attractive.
+Use a utility-first CSS framework to write clean and manageable styles.

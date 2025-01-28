@@ -4,52 +4,75 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Todo Application</title>
-        <link rel="stylesheet" href="./styles.css" />
+        <script src="https://cdn.tailwindcss.com"></script>
     </head>
-    <body>
-        <h1>Todo Application</h1>
+    <body class="bg-gray-100 text-gray-800">
+        <h1 class="text-3xl font-bold text-center my-6">Todo Application</h1>
 
         <!-- Form to add new Todo -->
-        <h2>Add Todo</h2>
-        <form>
-            <label for="todo-title">Title:</label>
+        <h2 class="text-2xl font-semibold text-center">Add Todo</h2>
+        <form
+            class="max-w-lg mx-auto bg-white p-6 border border-gray-300 rounded-lg shadow-md mt-4"
+        >
+            <label for="todo-title" class="block text-sm font-medium mb-2"
+                >Title:</label
+            >
             <input
                 type="text"
                 id="todo-title"
                 name="todo-title"
                 placeholder="Enter todo title"
                 required
+                class="w-full p-2 border border-gray-300 rounded mb-4"
             />
-            <label for="todo-description">Description:</label>
+            <label for="todo-description" class="block text-sm font-medium mb-2"
+                >Description:</label
+            >
             <input
                 type="text"
                 id="todo-description"
                 name="todo-description"
                 placeholder="Enter todo description"
+                class="w-full p-2 border border-gray-300 rounded mb-4"
             />
-            <button type="submit">Add Todo</button>
+            <button
+                type="submit"
+                class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            >
+                Add Todo
+            </button>
         </form>
 
         <!-- Todo List Table -->
-        <h2>Todo List</h2>
-        <table>
+        <h2 class="text-2xl font-semibold text-center mt-8">Todo List</h2>
+        <table
+            class="w-11/12 mx-auto bg-white border border-gray-300 rounded-lg shadow-md mt-4 text-left"
+        >
             <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Actions</th>
+                <tr class="bg-gray-100 border-b">
+                    <th class="py-2 px-4">#</th>
+                    <th class="py-2 px-4">Title</th>
+                    <th class="py-2 px-4">Description</th>
+                    <th class="py-2 px-4">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <!-- Sample Todo Row -->
-                <tr>
-                    <td>1</td>
-                    <td>Sample Todo</td>
-                    <td>This is a sample description.</td>
-                    <td>
-                        <button>Edit</button>
-                        <button>Delete</button>
+                <tr class="border-b hover:bg-gray-50">
+                    <td class="py-2 px-4">1</td>
+                    <td class="py-2 px-4">Sample Todo</td>
+                    <td class="py-2 px-4">This is a sample description.</td>
+                    <td class="py-2 px-4">
+                        <button
+                            class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600"
+                        >
+                            Edit
+                        </button>
+                        <button
+                            class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 ml-2"
+                        >
+                            Delete
+                        </button>
                     </td>
                 </tr>
                 <!-- Additional rows will go here -->
@@ -57,24 +80,39 @@
         </table>
 
         <!-- Edit Todo Form -->
-        <h2>Edit Todo</h2>
-        <form>
-            <label for="edit-todo-title">Title:</label>
+        <h2 class="text-2xl font-semibold text-center mt-8">Edit Todo</h2>
+        <form
+            class="max-w-lg mx-auto bg-white p-6 border border-gray-300 rounded-lg shadow-md mt-4"
+        >
+            <label for="edit-todo-title" class="block text-sm font-medium mb-2"
+                >Title:</label
+            >
             <input
                 type="text"
                 id="edit-todo-title"
                 name="edit-todo-title"
                 placeholder="Edit todo title"
                 required
+                class="w-full p-2 border border-gray-300 rounded mb-4"
             />
-            <label for="edit-todo-description">Description:</label>
+            <label
+                for="edit-todo-description"
+                class="block text-sm font-medium mb-2"
+                >Description:</label
+            >
             <input
                 type="text"
                 id="edit-todo-description"
                 name="edit-todo-description"
                 placeholder="Edit todo description"
+                class="w-full p-2 border border-gray-300 rounded mb-4"
             />
-            <button type="submit">Update Todo</button>
+            <button
+                type="submit"
+                class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            >
+                Update Todo
+            </button>
         </form>
     </body>
 </html>
