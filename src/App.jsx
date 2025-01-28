@@ -1,11 +1,22 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import TodoForm from "./components/TodoForm";
 import TodoTable from "./components/TodoTable";
 
-export default function App() {
+const API_URL = "http://localhost:8000/api/todos";
+
+function App() {
     const [todos, setTodos] = useState([]);
     const [editTodoId, setEditTodoId] = useState(null);
     const [formData, setFormData] = useState({ title: "", description: "" });
+
+    useEffect(() => {
+        // Fetch todos on component mount
+        axios
+            .get(API_URL)
+            .then((response) => setTodos(response.data))
+            .catch((error) => console.error("Error fetching todos:", error));
+    }, []);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -14,12 +25,22 @@ export default function App() {
 
     const addTodo = (e) => {
         e.preventDefault();
-        setTodos((prev) => [...prev, { ...formData }]);
-        setFormData({ title: "", description: "" });
+        axios
+            .post(API_URL, formData)
+            .then((response) => {
+                setTodos((prev) => [...prev, response.data]);
+                setFormData({ title: "", description: "" });
+            })
+            .catch((error) => console.error("Error adding todo:", error));
     };
 
     const deleteTodo = (index) => {
-        setTodos((prev) => prev.filter((_, i) => i !== index));
+        axios
+            .delete(`${API_URL}/${index}`)
+            .then(() => {
+                setTodos((prev) => prev.filter((_, i) => i !== index));
+            })
+            .catch((error) => console.error("Error deleting todo:", error));
     };
 
     const editTodo = (index) => {
@@ -29,11 +50,18 @@ export default function App() {
 
     const updateTodo = (e) => {
         e.preventDefault();
-        setTodos((prev) =>
-            prev.map((todo, i) => (i === editTodoId ? formData : todo))
-        );
-        setEditTodoId(null);
-        setFormData({ title: "", description: "" });
+        axios
+            .put(`${API_URL}/${editTodoId}`, formData)
+            .then((response) => {
+                setTodos((prev) =>
+                    prev.map((todo, i) =>
+                        i === editTodoId ? response.data : todo
+                    )
+                );
+                setEditTodoId(null);
+                setFormData({ title: "", description: "" });
+            })
+            .catch((error) => console.error("Error updating todo:", error));
     };
 
     return (
@@ -55,3 +83,5 @@ export default function App() {
         </div>
     );
 }
+
+export default App;
