@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Todo Application</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="bg-gray-100 text-gray-800">
+        <h1 class="text-3xl font-bold text-center my-6">Todo Application</h1>
+
+        <!-- Form to add new Todo -->
+        <h2 class="text-2xl font-semibold text-center">Add Todo</h2>
+        <form
+            id="addTodoForm"
+            class="max-w-lg mx-auto bg-white p-6 border border-gray-300 rounded-lg shadow-md mt-4"
+        >
+            <label for="todo-title" class="block text-sm font-medium mb-2"
+                >Title:</label
+            >
+            <input
+                type="text"
+                id="todo-title"
+                name="todo-title"
+                placeholder="Enter todo title"
+                required
+                class="w-full p-2 border border-gray-300 rounded mb-4"
+            />
+            <label for="todo-description" class="block text-sm font-medium mb-2"
+                >Description:</label
+            >
+            <input
+                type="text"
+                id="todo-description"
+                name="todo-description"
+                placeholder="Enter todo description"
+                class="w-full p-2 border border-gray-300 rounded mb-4"
+            />
+            <button
+                type="submit"
+                class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            >
+                Add Todo
+            </button>
+        </form>
+
+        <!-- Todo List Table -->
+        <h2 class="text-2xl font-semibold text-center mt-8">Todo List</h2>
+        <table
+            class="w-11/12 mx-auto bg-white border border-gray-300 rounded-lg shadow-md mt-4 text-left"
+        >
+            <thead>
+                <tr class="bg-gray-100 border-b">
+                    <th class="py-2 px-4">#</th>
+                    <th class="py-2 px-4">Title</th>
+                    <th class="py-2 px-4">Description</th>
+                    <th class="py-2 px-4">Actions</th>
+                </tr>
+            </thead>
+            <tbody id="todoTableBody">
+                <!-- Todo rows will be dynamically generated here -->
+            </tbody>
+        </table>
+
+        <!-- Edit Todo Form -->
+        <div id="editTodoFormContainer" class="hidden">
+            <h2 class="text-2xl font-semibold text-center mt-8">Edit Todo</h2>
+            <form
+                id="editTodoForm"
+                class="max-w-lg mx-auto bg-white p-6 border border-gray-300 rounded-lg shadow-md mt-4"
+            >
+                <label
+                    for="edit-todo-title"
+                    class="block text-sm font-medium mb-2"
+                    >Title:</label
+                >
+                <input
+                    type="text"
+                    id="edit-todo-title"
+                    name="edit-todo-title"
+                    placeholder="Edit todo title"
+                    required
+                    class="w-full p-2 border border-gray-300 rounded mb-4"
+                />
+                <label
+                    for="edit-todo-description"
+                    class="block text-sm font-medium mb-2"
+                    >Description:</label
+                >
+                <input
+                    type="text"
+                    id="edit-todo-description"
+                    name="edit-todo-description"
+                    placeholder="Edit todo description"
+                    class="w-full p-2 border border-gray-300 rounded mb-4"
+                />
+                <button
+                    type="submit"
+                    class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                >
+                    Update Todo
+                </button>
+            </form>
+        </div>
+
+        <script src="./script.js" />
+    </body>
+</html>
