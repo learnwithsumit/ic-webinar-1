@@ -15,19 +15,22 @@ export default function TodoTable({ todos, editTodo, deleteTodo }) {
                 </thead>
                 <tbody>
                     {todos.map((todo, index) => (
-                        <tr key={index} className="border-b hover:bg-gray-50">
+                        <tr
+                            key={todo._id}
+                            className="border-b hover:bg-gray-50"
+                        >
                             <td className="py-2 px-4">{index + 1}</td>
                             <td className="py-2 px-4">{todo.title}</td>
                             <td className="py-2 px-4">{todo.description}</td>
                             <td className="py-2 px-4">
                                 <button
-                                    onClick={() => editTodo(index)}
+                                    onClick={() => editTodo(todo._id)}
                                     className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600"
                                 >
                                     Edit
                                 </button>
                                 <button
-                                    onClick={() => deleteTodo(index)}
+                                    onClick={() => deleteTodo(todo._id)}
                                     className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 ml-2"
                                 >
                                     Delete

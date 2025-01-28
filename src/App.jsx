@@ -10,54 +10,63 @@ function App() {
     const [editTodoId, setEditTodoId] = useState(null);
     const [formData, setFormData] = useState({ title: "", description: "" });
 
+    // Fetch todos from the backend on component mount
     useEffect(() => {
-        // Fetch todos on component mount
         axios
             .get(API_URL)
             .then((response) => setTodos(response.data))
             .catch((error) => console.error("Error fetching todos:", error));
     }, []);
 
+    // Handle form input changes
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
+    // Add a new todo
     const addTodo = (e) => {
         e.preventDefault();
         axios
             .post(API_URL, formData)
             .then((response) => {
-                setTodos((prev) => [...prev, response.data]);
+                setTodos((prev) => [...prev, response.data]); // Append new todo from server response
                 setFormData({ title: "", description: "" });
             })
             .catch((error) => console.error("Error adding todo:", error));
     };
 
-    const deleteTodo = (index) => {
+    // Delete a todo by its MongoDB _id
+    const deleteTodo = (id) => {
         axios
-            .delete(`${API_URL}/${index}`)
+            .delete(`${API_URL}/${id}`)
             .then(() => {
-                setTodos((prev) => prev.filter((_, i) => i !== index));
+                setTodos((prev) => prev.filter((todo) => todo._id !== id)); // Filter out deleted todo
             })
             .catch((error) => console.error("Error deleting todo:", error));
     };
 
-    const editTodo = (index) => {
-        setEditTodoId(index);
-        setFormData(todos[index]);
+    // Edit a todo: Populate form with existing data
+    const editTodo = (id) => {
+        const todoToEdit = todos.find((todo) => todo._id === id);
+        setEditTodoId(id);
+        setFormData({
+            title: todoToEdit.title,
+            description: todoToEdit.description,
+        });
     };
 
+    // Update an existing todo
     const updateTodo = (e) => {
         e.preventDefault();
         axios
             .put(`${API_URL}/${editTodoId}`, formData)
             .then((response) => {
                 setTodos((prev) =>
-                    prev.map((todo, i) =>
-                        i === editTodoId ? response.data : todo
+                    prev.map((todo) =>
+                        todo._id === editTodoId ? response.data : todo
                     )
-                );
+                ); // Replace updated todo
                 setEditTodoId(null);
                 setFormData({ title: "", description: "" });
             })
