@@ -1,3 +1,3 @@
-## Simplify styling with Tailwind CSS
+## Add interactivity with JavaScript
 
-Use a utility-first CSS framework to write clean and manageable styles.
+Make your app dynamic by handling user actions and manipulating the DOM.

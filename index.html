@@ -12,6 +12,7 @@
         <!-- Form to add new Todo -->
         <h2 class="text-2xl font-semibold text-center">Add Todo</h2>
         <form
+            id="addTodoForm"
             class="max-w-lg mx-auto bg-white p-6 border border-gray-300 rounded-lg shadow-md mt-4"
         >
             <label for="todo-title" class="block text-sm font-medium mb-2"
@@ -56,63 +57,52 @@
                     <th class="py-2 px-4">Actions</th>
                 </tr>
             </thead>
-            <tbody>
-                <!-- Sample Todo Row -->
-                <tr class="border-b hover:bg-gray-50">
-                    <td class="py-2 px-4">1</td>
-                    <td class="py-2 px-4">Sample Todo</td>
-                    <td class="py-2 px-4">This is a sample description.</td>
-                    <td class="py-2 px-4">
-                        <button
-                            class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600"
-                        >
-                            Edit
-                        </button>
-                        <button
-                            class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 ml-2"
-                        >
-                            Delete
-                        </button>
-                    </td>
-                </tr>
-                <!-- Additional rows will go here -->
+            <tbody id="todoTableBody">
+                <!-- Todo rows will be dynamically generated here -->
             </tbody>
         </table>
 
         <!-- Edit Todo Form -->
-        <h2 class="text-2xl font-semibold text-center mt-8">Edit Todo</h2>
-        <form
-            class="max-w-lg mx-auto bg-white p-6 border border-gray-300 rounded-lg shadow-md mt-4"
-        >
-            <label for="edit-todo-title" class="block text-sm font-medium mb-2"
-                >Title:</label
+        <div id="editTodoFormContainer" class="hidden">
+            <h2 class="text-2xl font-semibold text-center mt-8">Edit Todo</h2>
+            <form
+                id="editTodoForm"
+                class="max-w-lg mx-auto bg-white p-6 border border-gray-300 rounded-lg shadow-md mt-4"
             >
-            <input
-                type="text"
-                id="edit-todo-title"
-                name="edit-todo-title"
-                placeholder="Edit todo title"
-                required
-                class="w-full p-2 border border-gray-300 rounded mb-4"
-            />
-            <label
-                for="edit-todo-description"
-                class="block text-sm font-medium mb-2"
-                >Description:</label
-            >
-            <input
-                type="text"
-                id="edit-todo-description"
-                name="edit-todo-description"
-                placeholder="Edit todo description"
-                class="w-full p-2 border border-gray-300 rounded mb-4"
-            />
-            <button
-                type="submit"
-                class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-            >
-                Update Todo
-            </button>
-        </form>
+                <label
+                    for="edit-todo-title"
+                    class="block text-sm font-medium mb-2"
+                    >Title:</label
+                >
+                <input
+                    type="text"
+                    id="edit-todo-title"
+                    name="edit-todo-title"
+                    placeholder="Edit todo title"
+                    required
+                    class="w-full p-2 border border-gray-300 rounded mb-4"
+                />
+                <label
+                    for="edit-todo-description"
+                    class="block text-sm font-medium mb-2"
+                    >Description:</label
+                >
+                <input
+                    type="text"
+                    id="edit-todo-description"
+                    name="edit-todo-description"
+                    placeholder="Edit todo description"
+                    class="w-full p-2 border border-gray-300 rounded mb-4"
+                />
+                <button
+                    type="submit"
+                    class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                >
+                    Update Todo
+                </button>
+            </form>
+        </div>
+
+        <script src="./script.js" />
     </body>
 </html>
