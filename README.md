@@ -1,3 +1,3 @@
-## Build the structure with HTML
+## Style it with CSS
 
-Create the basic layout and elements of your application.
+Add colors, fonts, and designs to make it look attractive.
