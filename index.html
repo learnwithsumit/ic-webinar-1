@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Todo Application</title>
+    </head>
+    <body>
+        <h1>Todo Application</h1>
+
+        <!-- Form to add new Todo -->
+        <h2>Add Todo</h2>
+        <form>
+            <label for="todo-title">Title:</label>
+            <input
+                type="text"
+                id="todo-title"
+                name="todo-title"
+                placeholder="Enter todo title"
+                required
+            />
+            <label for="todo-description">Description:</label>
+            <input
+                type="text"
+                id="todo-description"
+                name="todo-description"
+                placeholder="Enter todo description"
+            />
+            <button type="submit">Add Todo</button>
+        </form>
+
+        <!-- Todo List Table -->
+        <h2>Todo List</h2>
+        <table border="1" cellpadding="5" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Sample Todo Row -->
+                <tr>
+                    <td>1</td>
+                    <td>Sample Todo</td>
+                    <td>This is a sample description.</td>
+                    <td>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </td>
+                </tr>
+                <!-- Additional rows will go here -->
+            </tbody>
+        </table>
+
+        <!-- Edit Todo Form -->
+        <h2>Edit Todo</h2>
+        <form>
+            <label for="edit-todo-title">Title:</label>
+            <input
+                type="text"
+                id="edit-todo-title"
+                name="edit-todo-title"
+                placeholder="Edit todo title"
+                required
+            />
+            <label for="edit-todo-description">Description:</label>
+            <input
+                type="text"
+                id="edit-todo-description"
+                name="edit-todo-description"
+                placeholder="Edit todo description"
+            />
+            <button type="submit">Update Todo</button>
+        </form>
+    </body>
+</html>
